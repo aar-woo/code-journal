@@ -32,7 +32,7 @@
     <div class="container">
       <!-- New entry and img row -->
       <div data-view="entry-form">
-        <form>
+        <form id="entry-form">
            <div class="row">
             <div class="column-half">
               <h1>New Entry</h1>
@@ -41,17 +41,17 @@
             <div class="column-half">
               <label>
                 <h4 class="margin-bot-half-rem">Title</h4>
-                <input required type="text" class="width-100 text-box font-roboto">
+                <input required type="text" class="width-100 text-box font-roboto" id="title" name="title">
               </label>
               <label>
                 <h4 class="margin-bot-half-rem">Photo URL</h4>
-                <input required type="text" class="width-100 text-box font-roboto">
+                <input required type="text" class="width-100 text-box font-roboto" id="photoURL" name="photoURL">
               </label>
             </div>
             <div class="column-full">
               <label>
                 <h4 class="margin-bot-half-rem">Notes</h4>
-                <textarea required rows="8" class="width-100 text-box font-roboto"></textarea>
+                <textarea required rows="8" class="width-100 text-box font-roboto" id="notes" name="notes"></textarea>
               </label>
             </div>
           </div>
