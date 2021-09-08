@@ -6,7 +6,6 @@ var $img = document.querySelector('.img');
 
 function photoInput(event) {
   var url = $photoUrl.value;
-
   $img.setAttribute('src', url);
 }
 
@@ -30,21 +29,18 @@ $entryForm.addEventListener('submit', onSubmit);
 
 var $myStorage = window.localStorage;
 
-var previousEntries = $myStorage.getItem('local-storage-entries');
 var previousDataObj = $myStorage.getItem('local-data-object');
 
-if (previousEntries !== null) {
-  data.entries = JSON.parse(previousEntries);
+if (previousDataObj.entries !== null) {
   var previousData = JSON.parse(previousDataObj);
+  data.entries = previousData.entries;
   data.view = previousData.view;
   data.editing = previousData.editing;
   data.nextEntryId = previousData.nextEntryId;
 }
 
 function unload(event) {
-  var entriesJSON = JSON.stringify(data.entries);
   var dataObjJSON = JSON.stringify(data);
-  $myStorage.setItem('local-storage-entries', entriesJSON);
   $myStorage.setItem('local-data-object', dataObjJSON);
 }
 

@@ -16,6 +16,10 @@ textarea {
   outline-color: #552b80;
 }
 
+textarea {
+  resize: none;
+}
+
 .width-100 {
   width: 100%;
 }
@@ -23,11 +27,6 @@ textarea {
 .header {
   background-color: #552b80;
   color: white;
-}
-
-.header-container {
-  max-width: 575px;
-  margin: 0 auto;
 }
 
 .margin-auto {
