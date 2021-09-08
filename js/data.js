@@ -49,6 +49,7 @@ function renderEntry(entryObj) {
   divImgCol.className = 'column-half';
 
   var imgEl = document.createElement('img');
+  imgEl.className = 'img width-100';
   imgEl.setAttribute('src', entryObj.entryURL);
 
   var divTextCol = document.createElement('div');
@@ -66,10 +67,23 @@ function renderEntry(entryObj) {
   divRow.appendChild(divTextCol);
   divTextCol.appendChild(title);
   divTextCol.appendChild(notes);
+
+  return listItem;
 }
 
-renderEntry({
-  entryTitle: 'title',
-  entryURL: 'url',
-  entryNotes: 'notes'
-});
+// renderEntry({
+//   entryTitle: 'title',
+//   entryURL: 'url',
+//   entryNotes: 'notes'
+// });
+
+var $entryList = document.querySelector('.entryList');
+
+function onDOMLoad(event) {
+  for (var entryNum = 0; entryNum < data.entries.length; entryNum++) {
+    var entryRendered = renderEntry(data.entries[entryNum]);
+    $entryList.appendChild(entryRendered);
+  }
+}
+
+window.addEventListener('DOMContentLoaded', onDOMLoad);
