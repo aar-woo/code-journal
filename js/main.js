@@ -19,6 +19,10 @@ function onSubmit(event) {
     entryNotes: $entryForm.elements.notes.value,
     entryId: data.nextEntryId
   };
+  $entryList.prepend(renderEntry(newEntry));
+  $formDiv.className = data.view + ' hidden';
+  data.view = 'entries';
+  $entriesDiv.className = data.view;
   data.nextEntryId++;
   data.entries.unshift(newEntry);
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
@@ -76,20 +80,22 @@ function onDOMLoad(event) {
 
 window.addEventListener('DOMContentLoaded', onDOMLoad);
 
+var $entriesTab = document.querySelector('.entriesTab');
+var $entriesDiv = document.querySelector('.entries');
 var $newButton = document.querySelector('.newButton');
-var $formDiv = document.querySelector('.formDiv');
-var formDataView = $formDiv.getAttribute('data-view');
-
-var $entriesDiv = document.querySelector('.entriesDiv');
-
-$newButton.addEventListener('click', onNewClick);
-data.view = 'entries';
+var $formDiv = document.querySelector('.entry-form');
 
 function onNewClick(event) {
-  if (data.view === formDataView) {
-    return;
+  if (data.view === 'entry-form') {
+    $formDiv.className = data.view + ' hidden';
+    data.view = 'entries';
+    $entriesDiv.className = data.view;
+  } else {
+    $entriesDiv.className = data.view + ' hidden';
+    data.view = 'entry-form';
+    $formDiv.className = data.view;
   }
-
-  $formDiv.className = 'formDiv';
-  $entriesDiv.className = 'entriesDiv hidden';
 }
+
+$newButton.addEventListener('click', onNewClick);
+$entriesTab.addEventListener('click', onNewClick);
