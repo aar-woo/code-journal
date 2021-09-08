@@ -25,6 +25,10 @@ ul {
   padding: 0;
 }
 
+li {
+  display: inline-block;
+}
+
 .width-100 {
   width: 100%;
 }
@@ -89,4 +93,8 @@ ul {
 
 .obj-position-center {
   object-position: center;
+}
+
+.margin-bot-two-rem {
+  margin-bottom: 2rem;
 }
