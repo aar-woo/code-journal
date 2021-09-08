@@ -20,8 +20,6 @@ function onSubmit(event) {
     entryNotes: $entryForm.elements.notes.value,
     entryId: data.nextEntryId
   };
-  // newEntry.nextEntryId = data.nextEntryId;
-
   data.nextEntryId++;
   data.entries.unshift(newEntry);
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');

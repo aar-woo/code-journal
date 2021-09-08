@@ -11,10 +11,6 @@ h5 {
   font-family: "Work Sans", sans-serif;
 }
 
-img {
-  width: 100%;
-}
-
 input,
 textarea {
   outline-color: #552b80;
@@ -25,10 +21,13 @@ textarea {
 }
 
 .header {
-  margin: 0 auto;
-  padding: 0 1.5rem;
   background-color: #552b80;
   color: white;
+}
+
+.header-container {
+  max-width: 575px;
+  margin: 0 auto;
 }
 
 .margin-auto {
