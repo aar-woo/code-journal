@@ -29,7 +29,7 @@
           <nav>
             <ul class="padding-l">
               <li>
-                <a href="#entries" class="entriesTab">Entries</a>
+                <a href="#entries" data-view="entries" class="entriesTab">Entries</a>
               </li>
             </ul>
           </nav>
@@ -39,7 +39,7 @@
   </header>
   <main>
     <div class="container">
-      <div data-view="entry-form" class="entry-form">
+      <div data-view="entry-form" class="entry-form view">
         <form id="entry-form">
           <div class="row">
             <div class="column-full">
@@ -74,11 +74,11 @@
           </div>
         </form>
       </div>
-      <div data-view="entries" class="entries hidden" id="entries">
+      <div data-view="entries" class="entries view hidden" id="entries">
         <div class="row">
           <div class="column-full flex justify-between align-center">
             <h1>Entries</h1>
-            <a href="#entry-form"><button class="button newButton">NEW</button></a>
+            <a href="#entry-form"><button data-view="entry-form" class="button newButton">NEW</button></a>
           </div>
         </div>
         <ul class="entryList">

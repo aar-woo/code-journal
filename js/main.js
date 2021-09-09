@@ -79,22 +79,38 @@ function onDOMLoad(event) {
 
 window.addEventListener('DOMContentLoaded', onDOMLoad);
 
-var $entriesTab = document.querySelector('.entriesTab');
 var $entriesDiv = document.querySelector('.entries');
-var $newButton = document.querySelector('.newButton');
 var $formDiv = document.querySelector('.entry-form');
 
-function onNewClick(event) {
-  $entriesDiv.className = data.view + ' hidden';
-  data.view = 'entry-form';
-  $formDiv.className = data.view;
+// function onNewClick(event) {
+//   $entriesDiv.className = data.view + ' hidden';
+//   data.view = 'entry-form';
+//   $formDiv.className = data.view;
+// }
+
+// function onEntriesClick(event) {
+//   $formDiv.className = data.view + ' hidden';
+//   data.view = 'entries';
+//   $entriesDiv.className = data.view;
+// }
+
+// $newButton.addEventListener('click', onNewClick);
+// $entriesTab.addEventListener('click', onEntriesClick);
+var $newButton = document.querySelector('.newButton');
+var $entriesTab = document.querySelector('.entriesTab');
+var $views = document.querySelectorAll('.view');
+
+function switchViews(event) {
+  var targetDataView = event.target.getAttribute('data-view');
+  for (var i = 0; i < $views.length; i++) {
+    if ($views[i].getAttribute('data-view') === targetDataView) {
+      $views[i].className = 'view';
+      data.view = targetDataView;
+    } else {
+      $views[i].className = 'view hidden';
+    }
+  }
 }
 
-function onEntriesClick(event) {
-  $formDiv.className = data.view + ' hidden';
-  data.view = 'entries';
-  $entriesDiv.className = data.view;
-}
-
-$newButton.addEventListener('click', onNewClick);
-$entriesTab.addEventListener('click', onEntriesClick);
+$newButton.addEventListener('click', switchViews);
+$entriesTab.addEventListener('click', switchViews);
