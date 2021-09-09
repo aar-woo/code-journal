@@ -46,9 +46,9 @@ $entryForm.addEventListener('submit', onSubmit);
 */
 function renderEntry(entryObj) {
   var listItem = document.createElement('li');
+  listItem.setAttribute('data-enty-id', entryObj.entryId);
   var divRow = document.createElement('div');
   divRow.className = 'row margin-bot-two-rem';
-  listItem.appendChild(divRow);
 
   var divImgCol = document.createElement('div');
   divImgCol.className = 'column-half margin-bot-two-rem';
@@ -74,6 +74,7 @@ function renderEntry(entryObj) {
   notes.className = 'margin-top-0';
   notes.textContent = entryObj.entryNotes;
 
+  listItem.appendChild(divRow);
   divRow.appendChild(divImgCol);
   divImgCol.appendChild(imgEl);
   divRow.appendChild(divTextCol);
