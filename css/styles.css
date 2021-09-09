@@ -33,6 +33,10 @@ ul {
   width: 100%;
 }
 
+.width-50 {
+  width: 50%;
+}
+
 .header {
   background-color: #552b80;
   color: white;
@@ -108,8 +112,9 @@ ul {
   flex-wrap: nowrap;
 }
 
-.padding-l {
+.padding-lr {
   padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 a.entriesTab {
@@ -130,4 +135,35 @@ a.entriesTab {
 .fa-pencil-alt {
   font-size: x-large;
   color: #552b80;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.modal {
+  height: 8rem;
+  width: 21rem;
+  background-color: white;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.cancel-btn {
+  background-color: #b6b6b6;
+  color: black;
+}
+
+.confirm-btn {
+  background-color: #db2625;
+}
+
+.deleteLink {
+  color: #db2625;
+  text-decoration: underline;
 }

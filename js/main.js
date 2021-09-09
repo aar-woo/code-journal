@@ -128,6 +128,7 @@ function onClick(event) {
   data.editing = null;
   $entryHeader.textContent = 'New Entry';
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $deleteLink.className = 'deleteLink hidden';
   $entryForm.reset();
 }
 
@@ -137,6 +138,7 @@ $entriesTab.addEventListener('click', onClick);
 var $entryHeader = document.querySelector('.entryHeader');
 var $titleInput = document.querySelector('#title');
 var $notesInput = document.querySelector('#notes');
+var $deleteLink = document.querySelector('.deleteLink');
 
 function onPencilClick(event) {
   if (!event.target.matches('.fa-pencil-alt')) {
@@ -155,6 +157,41 @@ function onPencilClick(event) {
   $photoUrl.value = data.editing.entryURL;
   $titleInput.value = data.editing.entryTitle;
   $notesInput.value = data.editing.entryNotes;
+  $deleteLink.className = 'deleteLink';
 }
 
 $entryList.addEventListener('click', onPencilClick);
+
+var $modal = document.querySelector('.overlay');
+var $cancelBtn = document.querySelector('.cancel-btn');
+var $confirmBtn = document.querySelector('.confirm-btn');
+
+function onDeleteClick(event) {
+  $modal.className = 'overlay flex align-center';
+}
+
+$deleteLink.addEventListener('click', onDeleteClick);
+
+function onCancelClick(event) {
+  $modal.className = 'hidden';
+}
+
+$cancelBtn.addEventListener('click', onCancelClick);
+
+function onConfirmDeleteClick(event) {
+  for (var entryNum = 0; entryNum < data.entries.length; entryNum++) {
+    if (data.editing.entryId === data.entries[entryNum].entryId) {
+      data.entries.splice(entryNum, 1);
+    }
+  }
+  var $domEntriesList = document.querySelectorAll('.entryList li');
+  for (var domEntry = 0; domEntry < $domEntriesList.length; domEntry++) {
+    if (data.editing.entryId === parseInt($domEntriesList[domEntry].getAttribute('data-entry-id'))) {
+      $domEntriesList[domEntry].remove();
+    }
+  }
+  $modal.className = 'hidden';
+  switchViews('entries');
+}
+
+$confirmBtn.addEventListener('click', onConfirmDeleteClick);
