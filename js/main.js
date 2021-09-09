@@ -31,7 +31,7 @@ $entryForm.addEventListener('submit', onSubmit);
 
 function renderEntry(entryObj) {
   var listItem = document.createElement('li');
-  listItem.setAttribute('data-enty-id', entryObj.entryId);
+  listItem.setAttribute('data-entry-id', entryObj.entryId);
   var divRow = document.createElement('div');
   divRow.className = 'row margin-bot-two-rem';
 
@@ -115,4 +115,12 @@ function onPencilClick(event) {
     return;
   }
   switchViews('entry-form');
+  var entrySelected = event.target.closest('li');
+
+  for (var entryNum = 0; entryNum < data.entries.length; entryNum++) {
+    if (data.entries[entryNum].entryId === parseInt(entrySelected.getAttribute('data-entry-id'))) {
+      data.editing = data.entries[entryNum];
+    }
+  }
+  // console.log(data.editing);
 }
