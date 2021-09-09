@@ -20,9 +20,7 @@ function onSubmit(event) {
     entryId: data.nextEntryId
   };
   $entryList.prepend(renderEntry(newEntry));
-  $formDiv.className = data.view + ' hidden';
-  data.view = 'entries';
-  $entriesDiv.className = data.view;
+  switchViews('entries');
   data.nextEntryId++;
   data.entries.unshift(newEntry);
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
@@ -74,9 +72,6 @@ function onDOMLoad(event) {
 }
 
 window.addEventListener('DOMContentLoaded', onDOMLoad);
-
-var $entriesDiv = document.querySelector('.entries');
-var $formDiv = document.querySelector('.entry-form');
 
 var $newButton = document.querySelector('.newButton');
 var $entriesTab = document.querySelector('.entriesTab');
