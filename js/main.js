@@ -169,11 +169,13 @@ var $confirmBtn = document.querySelector('.confirm-btn');
 function onDeleteClick(event) {
   $modal.className = 'overlay flex align-center';
 }
+
 $deleteLink.addEventListener('click', onDeleteClick);
 
 function onCancelClick(event) {
   $modal.className = 'hidden';
 }
+
 $cancelBtn.addEventListener('click', onCancelClick);
 
 function onConfirmDeleteClick(event) {
@@ -189,6 +191,8 @@ function onConfirmDeleteClick(event) {
     }
   }
   $modal.className = 'hidden';
+  data.nextEntryId--;
   switchViews('entries');
 }
+
 $confirmBtn.addEventListener('click', onConfirmDeleteClick);
