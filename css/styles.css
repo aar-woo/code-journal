@@ -75,6 +75,10 @@ ul {
   margin-top: 0.5rem;
 }
 
+.margin-top-0 {
+  margin-top: 0;
+}
+
 .font-roboto {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
@@ -121,4 +125,9 @@ a.entriesTab {
   .img {
     height: 450px;
   }
+}
+
+.fa-pencil-alt {
+  font-size: x-large;
+  color: #552b80;
 }
