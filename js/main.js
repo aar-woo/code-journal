@@ -128,6 +128,7 @@ function onClick(event) {
   data.editing = null;
   $entryHeader.textContent = 'New Entry';
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $deleteLink.className = ('deleteLink hidden');
   $entryForm.reset();
 }
 
@@ -137,6 +138,7 @@ $entriesTab.addEventListener('click', onClick);
 var $entryHeader = document.querySelector('.entryHeader');
 var $titleInput = document.querySelector('#title');
 var $notesInput = document.querySelector('#notes');
+var $deleteLink = document.querySelector('.deleteLink');
 
 function onPencilClick(event) {
   if (!event.target.matches('.fa-pencil-alt')) {
@@ -155,6 +157,7 @@ function onPencilClick(event) {
   $photoUrl.value = data.editing.entryURL;
   $titleInput.value = data.editing.entryTitle;
   $notesInput.value = data.editing.entryNotes;
+  $deleteLink.className = 'deleteLink';
 }
 
 $entryList.addEventListener('click', onPencilClick);
