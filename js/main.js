@@ -17,7 +17,6 @@ function onSubmit(event) {
     entryTitle: $entryForm.elements.title.value,
     entryURL: $entryForm.elements.photoURL.value,
     entryNotes: $entryForm.elements.notes.value
-    // entryId: data.nextEntryId
   };
   if (data.editing !== null) {
     newEntry.entryId = data.editing.entryId;
@@ -39,6 +38,7 @@ function onSubmit(event) {
     data.nextEntryId++;
     data.entries.unshift(newEntry);
   }
+  $entryHeader.textContent = 'New Entry';
   switchViews('entries');
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
   $entryForm.reset();
@@ -96,6 +96,13 @@ function onDOMLoad(event) {
     $entryList.appendChild(entryRendered);
   }
   switchViews(data.view);
+  if (data.editing !== null) {
+    $entryHeader.textContent = 'Edit Entry';
+    $img.setAttribute('src', data.editing.entryURL);
+    $photoUrl.value = data.editing.entryURL;
+    $titleInput.value = data.editing.entryTitle;
+    $notesInput.value = data.editing.entryNotes;
+  }
 }
 
 window.addEventListener('DOMContentLoaded', onDOMLoad);
@@ -118,17 +125,18 @@ function switchViews(view) {
 function onClick(event) {
   var targetDataView = event.target.getAttribute('data-view');
   switchViews(targetDataView);
+  data.editing = null;
+  $entryHeader.textContent = 'New Entry';
+  $img.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $entryForm.reset();
 }
 
 $newButton.addEventListener('click', onClick);
 $entriesTab.addEventListener('click', onClick);
 
-// LIsten for clicks on ul element
 var $entryHeader = document.querySelector('.entryHeader');
 var $titleInput = document.querySelector('#title');
 var $notesInput = document.querySelector('#notes');
-
-$entryList.addEventListener('click', onPencilClick);
 
 function onPencilClick(event) {
   if (!event.target.matches('.fa-pencil-alt')) {
@@ -148,3 +156,5 @@ function onPencilClick(event) {
   $titleInput.value = data.editing.entryTitle;
   $notesInput.value = data.editing.entryNotes;
 }
+
+$entryList.addEventListener('click', onPencilClick);
