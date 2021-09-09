@@ -70,13 +70,7 @@ function onDOMLoad(event) {
     var entryRendered = renderEntry(data.entries[entryNum]);
     $entryList.appendChild(entryRendered);
   }
-  for (var i = 0; i < $views.length; i++) {
-    if ($views[i].getAttribute('data-view') === data.view) {
-      $views[i].className = 'view';
-    } else {
-      $views[i].className = 'view hidden';
-    }
-  }
+  switchViews(data.view);
 }
 
 window.addEventListener('DOMContentLoaded', onDOMLoad);
@@ -88,17 +82,21 @@ var $newButton = document.querySelector('.newButton');
 var $entriesTab = document.querySelector('.entriesTab');
 var $views = document.querySelectorAll('.view');
 
-function switchViews(event) {
-  var targetDataView = event.target.getAttribute('data-view');
+function switchViews(view) {
   for (var i = 0; i < $views.length; i++) {
-    if ($views[i].getAttribute('data-view') === targetDataView) {
+    if ($views[i].getAttribute('data-view') === view) {
       $views[i].className = 'view';
-      data.view = targetDataView;
+      data.view = view;
     } else {
       $views[i].className = 'view hidden';
     }
   }
 }
 
-$newButton.addEventListener('click', switchViews);
-$entriesTab.addEventListener('click', switchViews);
+function onClick(event) {
+  var targetDataView = event.target.getAttribute('data-view');
+  switchViews(targetDataView);
+}
+
+$newButton.addEventListener('click', onClick);
+$entriesTab.addEventListener('click', onClick);
