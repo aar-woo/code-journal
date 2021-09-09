@@ -73,16 +73,10 @@ function onDOMLoad(event) {
   for (var i = 0; i < $views.length; i++) {
     if ($views[i].getAttribute('data-view') === data.view) {
       $views[i].className = 'view';
-      // data.view = targetDataView;
     } else {
       $views[i].className = 'view hidden';
     }
   }
-  // if (data.view === 'entries') {
-  //   $formDiv.className = data.view + ' hidden';
-  //   data.view = 'entries';
-  //   $entriesDiv.className = data.view;
-  // }
 }
 
 window.addEventListener('DOMContentLoaded', onDOMLoad);
@@ -90,20 +84,6 @@ window.addEventListener('DOMContentLoaded', onDOMLoad);
 var $entriesDiv = document.querySelector('.entries');
 var $formDiv = document.querySelector('.entry-form');
 
-// function onNewClick(event) {
-//   $entriesDiv.className = data.view + ' hidden';
-//   data.view = 'entry-form';
-//   $formDiv.className = data.view;
-// }
-
-// function onEntriesClick(event) {
-//   $formDiv.className = data.view + ' hidden';
-//   data.view = 'entries';
-//   $entriesDiv.className = data.view;
-// }
-
-// $newButton.addEventListener('click', onNewClick);
-// $entriesTab.addEventListener('click', onEntriesClick);
 var $newButton = document.querySelector('.newButton');
 var $entriesTab = document.querySelector('.entriesTab');
 var $views = document.querySelectorAll('.view');
