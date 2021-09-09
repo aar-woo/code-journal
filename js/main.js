@@ -107,6 +107,9 @@ $newButton.addEventListener('click', onClick);
 $entriesTab.addEventListener('click', onClick);
 
 // LIsten for clicks on ul element
+var $entryHeader = document.querySelector('.entryHeader');
+var $titleInput = document.querySelector('#title');
+var $notesInput = document.querySelector('#notes');
 
 $entryList.addEventListener('click', onPencilClick);
 
@@ -122,5 +125,9 @@ function onPencilClick(event) {
       data.editing = data.entries[entryNum];
     }
   }
-  // console.log(data.editing);
+  $entryHeader.textContent = 'Edit Entry';
+  $img.setAttribute('src', data.editing.entryURL);
+  $photoUrl.value = data.editing.entryURL;
+  $titleInput.value = data.editing.entryTitle;
+  $notesInput.value = data.editing.entryNotes;
 }
