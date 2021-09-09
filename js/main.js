@@ -163,9 +163,25 @@ function onPencilClick(event) {
 $entryList.addEventListener('click', onPencilClick);
 
 var $modal = document.querySelector('.overlay');
-
-$deleteLink.addEventListener('click', onDeleteClick);
+var $cancelBtn = document.querySelector('.cancel-btn');
+var $confirmBtn = document.querySelector('.confirm-btn');
 
 function onDeleteClick(event) {
   $modal.className = 'overlay flex align-center';
 }
+$deleteLink.addEventListener('click', onDeleteClick);
+
+function onCancelClick(event) {
+  $modal.className = 'hidden';
+}
+$cancelBtn.addEventListener('click', onCancelClick);
+
+function onConfirmDeleteClick(event) {
+  for (var entryNum = 0; entryNum < data.entries.length; entryNum++) {
+    if (data.editing.entryId === data.entries[entryNum].entryId) {
+      data.entries.splice(entryNum, 1);
+    }
+  }
+}
+
+$confirmBtn.addEventListener('click', onConfirmDeleteClick);
