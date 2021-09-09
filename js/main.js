@@ -128,7 +128,7 @@ function onClick(event) {
   data.editing = null;
   $entryHeader.textContent = 'New Entry';
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
-  $deleteLink.className = ('deleteLink hidden');
+  $deleteLink.className = 'deleteLink hidden';
   $entryForm.reset();
 }
 
@@ -191,7 +191,6 @@ function onConfirmDeleteClick(event) {
     }
   }
   $modal.className = 'hidden';
-  data.nextEntryId--;
   switchViews('entries');
 }
 
