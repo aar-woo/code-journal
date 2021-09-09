@@ -24,6 +24,13 @@ function onSubmit(event) {
     for (var entryNum = 0; entryNum < data.entries.length; entryNum++) {
       if (data.entries[entryNum].entryId === newEntry.entryId) {
         data.entries[entryNum] = newEntry;
+        var $domEntriesList = document.querySelectorAll('.entryList li');
+        for (var domEntry = 0; domEntry < $domEntriesList.length; domEntry++) {
+          if (parseInt($domEntriesList[domEntry].getAttribute('data-entry-id')) === newEntry.entryId) {
+            $domEntriesList[domEntry].replaceWith(renderEntry(newEntry));
+          }
+        }
+        data.editing = null;
       }
     }
   } else {
