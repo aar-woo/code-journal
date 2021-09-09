@@ -1,14 +1,18 @@
 body {
   font-family: "Roboto", sans-serif;
   background-color: #f0f0f0;
+  line-height: 1.8rem;
 }
 
 h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+button,
+a {
   font-family: "Work Sans", sans-serif;
+  font-weight: bold;
 }
 
 input,
@@ -23,10 +27,6 @@ textarea {
 ul {
   list-style-type: none;
   padding: 0;
-}
-
-li {
-  display: inline-block;
 }
 
 .width-100 {
@@ -49,6 +49,7 @@ li {
 .img {
   height: 350px;
   object-fit: cover;
+  border-radius: 5px;
 }
 
 .text-box {
@@ -110,4 +111,14 @@ li {
 a.entriesTab {
   color: white;
   text-decoration: none;
+}
+
+.newButton {
+  font-size: 1.2rem;
+}
+
+@media screen and (min-width: 768px) {
+  .img {
+    height: 450px;
+  }
 }

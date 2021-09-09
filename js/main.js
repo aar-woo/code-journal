@@ -63,18 +63,17 @@ function renderEntry(entryObj) {
   return listItem;
 }
 
-// renderEntry({
-//   entryTitle: 'title',
-//   entryURL: 'url',
-//   entryNotes: 'notes'
-// });
-
 var $entryList = document.querySelector('.entryList');
 
 function onDOMLoad(event) {
   for (var entryNum = 0; entryNum < data.entries.length; entryNum++) {
     var entryRendered = renderEntry(data.entries[entryNum]);
     $entryList.appendChild(entryRendered);
+  }
+  if (data.view === 'entries') {
+    $formDiv.className = data.view + ' hidden';
+    data.view = 'entries';
+    $entriesDiv.className = data.view;
   }
 }
 
@@ -86,16 +85,16 @@ var $newButton = document.querySelector('.newButton');
 var $formDiv = document.querySelector('.entry-form');
 
 function onNewClick(event) {
-  if (data.view === 'entry-form') {
-    $formDiv.className = data.view + ' hidden';
-    data.view = 'entries';
-    $entriesDiv.className = data.view;
-  } else {
-    $entriesDiv.className = data.view + ' hidden';
-    data.view = 'entry-form';
-    $formDiv.className = data.view;
-  }
+  $entriesDiv.className = data.view + ' hidden';
+  data.view = 'entry-form';
+  $formDiv.className = data.view;
+}
+
+function onEntriesClick(event) {
+  $formDiv.className = data.view + ' hidden';
+  data.view = 'entries';
+  $entriesDiv.className = data.view;
 }
 
 $newButton.addEventListener('click', onNewClick);
-$entriesTab.addEventListener('click', onNewClick);
+$entriesTab.addEventListener('click', onEntriesClick);
