@@ -182,6 +182,13 @@ function onConfirmDeleteClick(event) {
       data.entries.splice(entryNum, 1);
     }
   }
+  var $domEntriesList = document.querySelectorAll('.entryList li');
+  for (var domEntry = 0; domEntry < $domEntriesList.length; domEntry++) {
+    if (data.editing.entryId === parseInt($domEntriesList[domEntry].getAttribute('data-entry-id'))) {
+      $domEntriesList[domEntry].remove();
+    }
+  }
+  $modal.className = 'hidden';
+  switchViews('entries');
 }
-
 $confirmBtn.addEventListener('click', onConfirmDeleteClick);
