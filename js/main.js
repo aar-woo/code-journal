@@ -16,13 +16,23 @@ function onSubmit(event) {
   var newEntry = {
     entryTitle: $entryForm.elements.title.value,
     entryURL: $entryForm.elements.photoURL.value,
-    entryNotes: $entryForm.elements.notes.value,
-    entryId: data.nextEntryId
+    entryNotes: $entryForm.elements.notes.value
+    // entryId: data.nextEntryId
   };
-  $entryList.prepend(renderEntry(newEntry));
+  if (data.editing !== null) {
+    newEntry.entryId = data.editing.entryId;
+    for (var entryNum = 0; entryNum < data.entries.length; entryNum++) {
+      if (data.entries[entryNum].entryId === newEntry.entryId) {
+        data.entries[entryNum] = newEntry;
+      }
+    }
+  } else {
+    newEntry.entryId = data.nextEntryId;
+    $entryList.prepend(renderEntry(newEntry));
+    data.nextEntryId++;
+    data.entries.unshift(newEntry);
+  }
   switchViews('entries');
-  data.nextEntryId++;
-  data.entries.unshift(newEntry);
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
   $entryForm.reset();
 }
