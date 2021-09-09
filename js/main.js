@@ -161,3 +161,11 @@ function onPencilClick(event) {
 }
 
 $entryList.addEventListener('click', onPencilClick);
+
+var $modal = document.querySelector('.overlay');
+
+$deleteLink.addEventListener('click', onDeleteClick);
+
+function onDeleteClick(event) {
+  $modal.className = 'overlay flex align-center';
+}
