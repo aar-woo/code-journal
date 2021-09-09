@@ -70,11 +70,19 @@ function onDOMLoad(event) {
     var entryRendered = renderEntry(data.entries[entryNum]);
     $entryList.appendChild(entryRendered);
   }
-  if (data.view === 'entries') {
-    $formDiv.className = data.view + ' hidden';
-    data.view = 'entries';
-    $entriesDiv.className = data.view;
+  for (var i = 0; i < $views.length; i++) {
+    if ($views[i].getAttribute('data-view') === data.view) {
+      $views[i].className = 'view';
+      // data.view = targetDataView;
+    } else {
+      $views[i].className = 'view hidden';
+    }
   }
+  // if (data.view === 'entries') {
+  //   $formDiv.className = data.view + ' hidden';
+  //   data.view = 'entries';
+  //   $entriesDiv.className = data.view;
+  // }
 }
 
 window.addEventListener('DOMContentLoaded', onDOMLoad);
