@@ -130,6 +130,11 @@ function onClick(event) {
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
   $deleteLink.className = 'deleteLink hidden';
   $entryForm.reset();
+  var $domEntriesList = document.querySelectorAll('.entryList li');
+  for (var domEntry = 0; domEntry < $domEntriesList.length; domEntry++) {
+    $domEntriesList[domEntry].className = '';
+  }
+  $noMatches.className = 'hidden';
 }
 
 $newButton.addEventListener('click', onClick);
@@ -197,11 +202,41 @@ function onConfirmDeleteClick(event) {
 $confirmBtn.addEventListener('click', onConfirmDeleteClick);
 
 var $searchBtn = document.querySelector('.searchBtn');
-// var $searchBar = document.querySelector('.searchBar');
-$searchBtn.addEventListener('click', onSearch);
+var $searchBar = document.querySelector('.searchBar');
+var $noMatches = document.querySelector('.noMatches');
 
 function onSearch(event) {
-  // var searchValue = $searchBar.value;
-  // for (var domEntry = 0; )
-  // console.log(searchValue);
+  switchViews('entries');
+  var searchValue = $searchBar.value.toLowerCase();
+  var $domEntriesList = document.querySelectorAll('.entryList li');
+  var toView = [];
+  $noMatches.className = 'hidden';
+
+  for (var domEntry = 0; domEntry < $domEntriesList.length; domEntry++) {
+    var $currDomEntry = $domEntriesList[domEntry];
+    var $currTitle = $currDomEntry.querySelector('h2').textContent;
+    var $currNotes = $currDomEntry.querySelector('p').textContent;
+    var $currEntryText = ($currTitle + ' ' + $currNotes).toLowerCase();
+    var currWord = '';
+    $currDomEntry.className = '';
+
+    for (var letterInText = 0; letterInText < $currEntryText.length; letterInText++) {
+      if ($currEntryText[letterInText] === ' ' || $currEntryText[letterInText] === '.' || $currEntryText[letterInText] === ',') {
+        if (currWord === searchValue) {
+          toView.push($currDomEntry);
+        }
+        currWord = '';
+      } else {
+        currWord += $currEntryText[letterInText];
+      }
+    }
+    if (!toView.includes($currDomEntry)) {
+      $currDomEntry.className = 'hidden';
+    }
+  }
+  if (toView.length === 0) {
+    $noMatches.className = 'column-full noMatches';
+  }
 }
+
+$searchBtn.addEventListener('click', onSearch);
