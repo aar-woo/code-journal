@@ -209,7 +209,8 @@ function onSearch(event) {
   switchViews('entries');
   var searchValue = $searchBar.value.toLowerCase();
   var $domEntriesList = document.querySelectorAll('.entryList li');
-  var toView = [];
+  var totalNumEntries = $domEntriesList.length;
+
   $noMatches.className = 'hidden';
 
   for (var domEntry = 0; domEntry < $domEntriesList.length; domEntry++) {
@@ -217,24 +218,13 @@ function onSearch(event) {
     var $currTitle = $currDomEntry.querySelector('h2').textContent;
     var $currNotes = $currDomEntry.querySelector('p').textContent;
     var $currEntryText = ($currTitle + ' ' + $currNotes).toLowerCase();
-    var currWord = '';
     $currDomEntry.className = '';
-
-    for (var letterInText = 0; letterInText < $currEntryText.length; letterInText++) {
-      if ($currEntryText[letterInText] === ' ' || $currEntryText[letterInText] === '.' || $currEntryText[letterInText] === ',') {
-        if (currWord === searchValue) {
-          toView.push($currDomEntry);
-        }
-        currWord = '';
-      } else {
-        currWord += $currEntryText[letterInText];
-      }
-    }
-    if (!toView.includes($currDomEntry)) {
+    if (!$currEntryText.includes(searchValue)) {
       $currDomEntry.className = 'hidden';
+      totalNumEntries--;
     }
   }
-  if (toView.length === 0) {
+  if (totalNumEntries === 0) {
     $noMatches.className = 'column-full noMatches';
   }
 }
