@@ -117,6 +117,11 @@ ul {
   padding-right: 1.5rem;
 }
 
+.padding-lr-1 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 a.entriesTab {
   color: white;
   text-decoration: none;
@@ -124,12 +129,6 @@ a.entriesTab {
 
 .newButton {
   font-size: 1.2rem;
-}
-
-@media screen and (min-width: 768px) {
-  .img {
-    height: 450px;
-  }
 }
 
 .fa-pencil-alt {
@@ -166,4 +165,26 @@ a.entriesTab {
 .deleteLink {
   color: #db2625;
   text-decoration: underline;
+}
+
+.flex-end {
+  justify-content: flex-end;
+}
+
+.searchBar {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .img {
+    height: 450px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .search {
+    margin-top: inherit;
+    margin-bottom: inherit;
+    justify-content: flex-end;
+  }
 }
