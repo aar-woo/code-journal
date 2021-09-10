@@ -185,11 +185,6 @@ a.entriesTab {
   border-bottom-right-radius: 4px;
 }
 
-.padding-tb-1 {
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
 .noMatches {
   text-align: center;
   color: grey;
