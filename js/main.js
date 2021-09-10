@@ -195,3 +195,13 @@ function onConfirmDeleteClick(event) {
 }
 
 $confirmBtn.addEventListener('click', onConfirmDeleteClick);
+
+var $searchBtn = document.querySelector('.searchBtn');
+// var $searchBar = document.querySelector('.searchBar');
+$searchBtn.addEventListener('click', onSearch);
+
+function onSearch(event) {
+  // var searchValue = $searchBar.value;
+  // for (var domEntry = 0; )
+  // console.log(searchValue);
+}
